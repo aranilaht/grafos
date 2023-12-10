@@ -25,3 +25,20 @@ class Mapa(object):
         self.mapa.pack()
 
         Button(self.frameConfig, text='Teste').pack()
+
+        self.listaDeMarcadores = []
+        self.listaDeCaminhos = []
+        self.bairro = bairro
+
+    def gerarNovoGrafo(self):
+        pass
+
+    def deletarGrafoAtual(self):
+        try:
+            self.mapa.delete_all_path()
+            self.listaDeMarcadores.clear()
+            self.mapa.delete_all_marker()
+            self.listaDeCaminhos.clear()
+        except:
+            pass
+
