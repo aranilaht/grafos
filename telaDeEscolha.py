@@ -2,6 +2,7 @@ from tkinter import messagebox, TOP, Label, OptionMenu, Button, BOTTOM, StringVa
 
 from strings import *
 from telaDeConfiguracoes import TelaDeConfiguracoesDoBairro
+from telaDeMapa import Mapa
 
 telaTK = Tk()
 telaTK.geometry("300x300")
@@ -36,13 +37,16 @@ class EscolhaDeBairro(object):
         self.proximoBt.pack(ipadx=20, ipady=10, side=BOTTOM)
 
     def abrirTelaDeConfiguracoesDoBairro(self):
+
         self.bairro = variable.get()
+        Mapa(self.bairro, telaTK)
+
         #
         # Validação para saber se o usuário selecionou corretamente um bairro.
-        if self.bairro == selecioneOpcao:
-            messagebox.showinfo(tituloPaginaDeErro, mensagemDeErro)
-        else:
-            TelaDeConfiguracoesDoBairro(self.bairro, telaTK)
+#        if self.bairro == selecioneOpcao:
+#            messagebox.showinfo(tituloPaginaDeErro, mensagemDeErro)
+#        else:
+#            TelaDeConfiguracoesDoBairro(self.bairro, telaTK)
 
 
 # Início da tela de selação.
