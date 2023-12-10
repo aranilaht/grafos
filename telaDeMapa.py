@@ -24,10 +24,37 @@ class Mapa(object):
         self.mapa.pack()
 
         self.redefinirMapa()
- 
-        Entry(self.frameConfig, width = 10).pack()
-        Entry(self.frameConfig, width = 10).pack()
-        Button(self.frameConfig, text='Adicionar poste').pack()
+
+        # add postes
+        xPostTitle = Label(self.frameConfig, text= 'Coordenada X Poste')
+        xPostTitle.grid(row=0, column=0)
+        xPostEntry = Entry(self.frameConfig, width = 12)
+        xPostEntry.grid(row=0, column=1)
+
+        yPostTitle = Label(self.frameConfig, text= 'Coordenada Y Poste')
+        yPostTitle.grid(row=1, column=0)
+        yPostEntry = Entry(self.frameConfig, width = 12)
+        yPostEntry.grid(row=1, column=1)
+
+        addPostButton = Button(self.frameConfig, text='Adicionar poste')
+        addPostButton.grid(row=2, column=0)
+
+        # espaçamento
+        Label(self.frameConfig, text="", width=16).grid(row=3)
+
+        #add casa
+        xHouseTitle = Label(self.frameConfig, text= 'Coordenada X Casa')
+        xHouseTitle.grid(row=4, column=0)
+        xHouseEntry = Entry(self.frameConfig, width = 12)
+        xHouseEntry.grid(row=4, column=1)
+
+        yHouseTitle = Label(self.frameConfig, text= 'Coordenada Y Casa')
+        yHouseTitle.grid(row=5, column=0)
+        yHouseEntry = Entry(self.frameConfig, width = 12)
+        yHouseEntry.grid(row=5, column=1)
+
+        addHouseButton = Button(self.frameConfig, text='Adicionar Casa')
+        addHouseButton.grid(row=6, column=0)
 
         self.listaDeMarcadores = []
         self.listaDeCaminhos = []
