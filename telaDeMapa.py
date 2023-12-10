@@ -24,14 +24,20 @@ class Mapa(object):
         self.mapa = TkinterMapView(self.frameMapa, width=900, height=900, corner_radius=0)
         self.mapa.pack()
 
+        self.redefinirMapa()
+
         Button(self.frameConfig, text='Teste').pack()
 
         self.listaDeMarcadores = []
         self.listaDeCaminhos = []
         self.bairro = bairro
 
+    def redefinirMapa(self):
+        self.mapa.set_position(-3.752396, -38.532785)
+        self.mapa.set_zoom(14)
+
     def gerarNovoGrafo(self):
-        pass
+        self.redefinirMapa()
 
     def deletarGrafoAtual(self):
         try:
