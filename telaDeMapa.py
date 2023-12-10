@@ -1,8 +1,7 @@
 import tkinter
 
-from tkinter import Frame, Button, LEFT, BOTH
+from tkinter import Frame, Button, LEFT, RIGHT, Y, BOTH, Entry, Label, Scrollbar, Listbox, END
 from tkintermapview import TkinterMapView
-
 
 class Mapa(object):
     def __init__(self, bairro, telaTk: tkinter.Tk):
@@ -16,7 +15,7 @@ class Mapa(object):
         self.frameMapa.config(width=900, height=900)
 
         self.frameConfig = Frame(self.mainFrame, bg='blue')
-        self.frameMapa.config(width=300, height=900)
+        self.frameConfig.config(width=300, height=900)
 
         self.frameMapa.pack(side=LEFT)
         self.frameConfig.pack(side=LEFT, fill=BOTH, expand=True)
@@ -25,8 +24,10 @@ class Mapa(object):
         self.mapa.pack()
 
         self.redefinirMapa()
-
-        Button(self.frameConfig, text='Teste').pack()
+ 
+        Entry(self.frameConfig, width = 10).pack()
+        Entry(self.frameConfig, width = 10).pack()
+        Button(self.frameConfig, text='Adicionar poste').pack()
 
         self.listaDeMarcadores = []
         self.listaDeCaminhos = []
@@ -47,4 +48,3 @@ class Mapa(object):
             self.listaDeCaminhos.clear()
         except:
             pass
-
