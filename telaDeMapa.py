@@ -1,8 +1,7 @@
 import tkinter
 
-from tkinter import Frame, Button, LEFT, BOTH
+from tkinter import Frame, Button, LEFT, RIGHT, Y, BOTH, Entry, Label, Scrollbar, Listbox, END
 from tkintermapview import TkinterMapView
-
 
 class Mapa(object):
     def __init__(self, bairro, telaTk: tkinter.Tk):
@@ -16,17 +15,33 @@ class Mapa(object):
         self.frameMapa.config(width=900, height=900)
 
         self.frameConfig = Frame(self.mainFrame, bg='blue')
-        self.frameMapa.config(width=300, height=900)
+        self.frameConfig.config(width=300, height=900)
 
         self.frameMapa.pack(side=LEFT)
         self.frameConfig.pack(side=LEFT, fill=BOTH, expand=True)
+
+        self.frameList = Frame(self.frameConfig)        
+        self.frameList.pack()
 
         self.mapa = TkinterMapView(self.frameMapa, width=900, height=900, corner_radius=0)
         self.mapa.pack()
 
         self.redefinirMapa()
 
-        Button(self.frameConfig, text='Teste').pack()
+        mylabel = Label(self.frameList, text ='Bairros', font = "30")  
+        mylabel.pack() 
+ 
+        myscroll = Scrollbar(self.frameList) 
+        myscroll.pack(side = RIGHT) 
+        
+        mylist = Listbox(self.frameList, yscrollcommand = myscroll.set )  
+        for line in range(1, 100): 
+            mylist.insert(END, "Number " + str(line)) 
+        mylist.pack() 
+
+        Entry(self.frameConfig, width = 280).pack()
+
+        Button(self.frameConfig, text='Reload').pack()
 
         self.listaDeMarcadores = []
         self.listaDeCaminhos = []
