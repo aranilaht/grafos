@@ -20,28 +20,41 @@ class Mapa(object):
         self.frameMapa.pack(side=LEFT)
         self.frameConfig.pack(side=LEFT, fill=BOTH, expand=True)
 
-        self.frameList = Frame(self.frameConfig)        
-        self.frameList.pack()
-
         self.mapa = TkinterMapView(self.frameMapa, width=900, height=900, corner_radius=0)
         self.mapa.pack()
 
         self.redefinirMapa()
 
-        mylabel = Label(self.frameList, text ='Bairros', font = "30")  
-        mylabel.pack() 
- 
-        myscroll = Scrollbar(self.frameList) 
-        myscroll.pack(side = RIGHT) 
-        
-        mylist = Listbox(self.frameList, yscrollcommand = myscroll.set )  
-        for line in range(1, 100): 
-            mylist.insert(END, "Number " + str(line)) 
-        mylist.pack() 
+        # add postes
+        xPostTitle = Label(self.frameConfig, text= 'Coordenada X Poste')
+        xPostTitle.grid(row=0, column=0)
+        xPostEntry = Entry(self.frameConfig, width = 12)
+        xPostEntry.grid(row=0, column=1)
 
-        Entry(self.frameConfig, width = 280).pack()
+        yPostTitle = Label(self.frameConfig, text= 'Coordenada Y Poste')
+        yPostTitle.grid(row=1, column=0)
+        yPostEntry = Entry(self.frameConfig, width = 12)
+        yPostEntry.grid(row=1, column=1)
 
-        Button(self.frameConfig, text='Reload').pack()
+        addPostButton = Button(self.frameConfig, text='Adicionar poste')
+        addPostButton.grid(row=2, column=0)
+
+        # espaçamento
+        Label(self.frameConfig, text="", width=16).grid(row=3)
+
+        #add casa
+        xHouseTitle = Label(self.frameConfig, text= 'Coordenada X Casa')
+        xHouseTitle.grid(row=4, column=0)
+        xHouseEntry = Entry(self.frameConfig, width = 12)
+        xHouseEntry.grid(row=4, column=1)
+
+        yHouseTitle = Label(self.frameConfig, text= 'Coordenada Y Casa')
+        yHouseTitle.grid(row=5, column=0)
+        yHouseEntry = Entry(self.frameConfig, width = 12)
+        yHouseEntry.grid(row=5, column=1)
+
+        addHouseButton = Button(self.frameConfig, text='Adicionar Casa')
+        addHouseButton.grid(row=6, column=0)
 
         self.listaDeMarcadores = []
         self.listaDeCaminhos = []
@@ -62,4 +75,3 @@ class Mapa(object):
             self.listaDeCaminhos.clear()
         except:
             pass
-
